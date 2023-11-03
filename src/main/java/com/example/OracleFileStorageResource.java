@@ -116,7 +116,7 @@ public class OracleFileStorageResource{
                 }
 
                 return responseBuilder.build();
-            }).onFailure().recoverWithItem(e -> Response.status(Response.Status.INTERNAL_SERVER_ERROR).build());
+            }).onFailure().recoverWithItem(e -> Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("File Download failed").build());
     }
 
     private AuthenticationDetailsProvider getAuthenticationDetailsProvider(String passphrase) {
