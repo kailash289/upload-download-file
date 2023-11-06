@@ -98,7 +98,7 @@ public class OracleFileStorageResource{
             String passphrase = "";
             return Uni.createFrom().item(() -> {
                 System.setProperty("OCI_JAVASDK_JERSEY_CLIENT_DEFAULT_CONNECTOR_ENABLED","true");
-                ObjectStorageClient client = new ObjectStorageClient(getAuthenticationDetailsProvider(passphrase), getClientConfiguration());
+                ObjectStorage client = ObjectStorageClient.builder().configuration(getClientConfiguration()).build(getAuthenticationDetailsProvider(passphrase));
                 GetObjectRequest request = GetObjectRequest.builder()
                         .bucketName(bucketName)
                         .namespaceName(namespace)
